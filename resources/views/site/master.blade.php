@@ -36,7 +36,7 @@
     <link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    @yield('extra_css');
+    @yield('extra_css')
 
     <!-- Modernizer JS -->
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
@@ -82,9 +82,27 @@
                                             <!-- end of logo -->
                                         </div>
         <form id="search-form" action="" method="GET" novalidate="novalidate" autocomplete="off" style="width:49%">
-          <div class="input-group my-4">
-            <input value="{{old('search')}}" id="search" name="search" type="text" class="form-control" placeholder="Search Product">
-          </div>
+                                        <!-- header search bar -->
+                                        <div class="header-search-bar">
+                                            <div class="input-group">
+                                                <select name="categoryName" id="categoryName">
+                                                    <option value="">Categories</option>
+                                                    <option value="01">Football</option>
+                                                    <option value="02">--- Dresses</option>
+                                                    <option value="03">--- Jursey</option>
+                                                    <option value="04">--- Boot</option>
+                                                    <option value="05">Cricket</option>
+                                                    <option value="06">--- Dresses</option>
+                                                    <option value="07">--- Jursey</option>
+                                                    <option value="08">--- Boot</option>
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <input type="search" name="search" id="search">
+                                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of header search bar -->
         </form>    
                                         <div class="col-lg-3 col-md-4 ml-10">
                                             <!-- shopping cart -->

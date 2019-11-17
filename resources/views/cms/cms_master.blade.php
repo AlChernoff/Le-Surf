@@ -15,18 +15,20 @@
     <title>Le Surf Admin Panel</title>
   </head>
   <body>
-<header>
+<header>  
    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{url('cms/dashboard')}}">Le Surf Adfmin Panel</a>
-<ul class="nav px-3">
-    <li class="nav-item">
-      <a target="_blank" class="nav-link text-white" href="{{url('user/logout')}}">Back to Site</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white" href="{{url('user/logout')}}">Log out</a>
-    </li>
-  </ul>
-</nav>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{url('cms/dashboard')}}">Le Surf <img src="{{asset('assets/images/logo.png')}}" 
+    style="width:50px;height: 30px" class="img-fluid mx-2"
+    alt="logo"> Admin Panel</a>
+    <ul class="nav px-3">
+      <li class="nav-item">
+        <a target="_blank" class="nav-link text-white" href="{{url('user/logout')}}">Back to Site</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{{url('user/logout')}}">Log out</a>
+      </li>
+    </ul>
+  </nav>
 </header>
 <div class="container-fluid">
   <div class="row">

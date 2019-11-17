@@ -576,7 +576,7 @@ $('#search').on('input', function () {
   
 			var availableTags = [];
 			response.forEach(function (val) {
-			  availableTags.push([val.product_title,val.category_url,val.product_url]);
+			  availableTags.push([val.product_title,val.category_url.toUpperCase(),val.product_url,val]);
 			});
 			$("#search").autocomplete({
 				delay:0,
@@ -585,7 +585,7 @@ $('#search').on('input', function () {
 			  create: function () {
                 $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
                     return $('<li>')
-                        .append(`<a href=${BASE_URL}shop/${item[1]}/${item[2]}>${item[0]}</a>`)
+                        .append(`<a href=${BASE_URL}shop/${item[1]}/${item[2]}><b>${item[1]}</b> => <b> ${item[0]}</b></a>`)
                         .appendTo(ul);
                 };
             }/* ,
