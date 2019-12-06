@@ -10,3 +10,15 @@ $('.add-to-cart-btn').on('click',function(){
     }
    });
 });
+
+$('.field-input-cms').on('focusin focusout',function(){
+   $(this).next().toggleClass('text-black').toggleClass('text-muted  ');
+});
+
+String.prototype.toPermalink = function(){
+   return this.toString().trim().toLowerCase().replace(/\s/g, '-');
+}
+
+$('.original-text').on('keyup',function(){
+   $('.target-text').val($(this).val().toPermalink());
+})

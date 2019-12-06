@@ -87,14 +87,6 @@
                                             <div class="input-group">
                                                 <select name="categoryName" id="categoryName">
                                                     <option value="">Categories</option>
-                                                    <option value="01">Football</option>
-                                                    <option value="02">--- Dresses</option>
-                                                    <option value="03">--- Jursey</option>
-                                                    <option value="04">--- Boot</option>
-                                                    <option value="05">Cricket</option>
-                                                    <option value="06">--- Dresses</option>
-                                                    <option value="07">--- Jursey</option>
-                                                    <option value="08">--- Boot</option>
                                                 </select>
                                                 <div class="input-group-append">
                                                     <input type="search" name="search" id="search">
@@ -144,12 +136,17 @@
                                                 <div class="main-menu">
                                                     <nav>
                                                         <ul>
-                                                            <li class=""><a href="{{url('about')}}">About</a>
-                                                            <li class=""><a href="{{url('shop')}}">Shop</a>
+                                                            <li class=""><a href="{{url('about')}}">About</a></li>
+                                                            <li class=""><a href="{{url('shop')}}">Shop</a></li>
+                                                            @if( !empty(App\Menu::all()->toArray()))
+                                                                @foreach (App\Menu::all()->toArray() as $menu )
+                                                                    <li class=""><a href="{{url($menu['menu_url'])}}">{{$menu['link']}}</a></li>
+                                                                @endforeach
+                                                            @endif
                                                                 <!-- ======  Submenu block  ======= -->
                                                                 <!-- ====  End of Submenu block  ==== -->
     
-                                                            </li>
+         
                                                             @if(!Session::has('user_id'))
                                                             <li><a href="{{url('user/signin')}}">Sign In</a></li>
                                                             <li><a href="{{url('user/signup')}}">Sign Up</a></li>

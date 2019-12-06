@@ -49,7 +49,7 @@ class Product extends Model
         if($item = Product::where('product_url','=',$product)->first()){
 
             $data['item'] = $item->toArray();
-            $data['page_title']=$data['item']['product_title']. ' product';
+            $data['page_title']=$data['item']['product_title'];
         }
         else{
             abort(404);

@@ -21,7 +21,10 @@
                     <tr>
                         <td>{{$menu['link']}}</td>
                         <td>{{$menu['menu_title']}}</td>
-                        <td><a class="btn btn-primary btn-sm" href="">Edit</a>  <a class="btn btn-danger btn-sm" href="">Delete</a></td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{{url('cms/menu/'.$menu['id'].'/edit')}}">Edit</a>  
+                            <a class="btn btn-danger btn-sm" href="{{ url('cms/menu/'.$menu['id'])}}">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

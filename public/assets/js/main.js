@@ -576,7 +576,7 @@ $('#search').on('input', function () {
   
 			var availableTags = [];
 			response.forEach(function (val) {
-			  availableTags.push([val.product_title,val.category_url.toUpperCase(),val.product_url,val]);
+			  availableTags.push([val.product_title,val.category_url.toUpperCase(),val.product_url,val.product_image]);
 			});
 			$("#search").autocomplete({
 				delay:0,
@@ -584,8 +584,10 @@ $('#search').on('input', function () {
 			  minLength: 1,
 			  create: function () {
                 $(this).data('ui-autocomplete')._renderItem = function (ul, item) {
+					var imageUrl = "/HackerU/PHP/final/public/assets/images/products/";
                     return $('<li>')
-                        .append(`<a href=${BASE_URL}shop/${item[1]}/${item[2]}><b>${item[1]}</b> => <b> ${item[0]}</b></a>`)
+						.append(`<a href=${BASE_URL}shop/${item[1]}/${item[2]}><img src=${imageUrl}${item[3]} alt="Product Image" height="60" width="60">
+						<b>${item[1]}</b> => <b> ${item[0]}</b></a>`)
                         .appendTo(ul);
                 };
             }/* ,
