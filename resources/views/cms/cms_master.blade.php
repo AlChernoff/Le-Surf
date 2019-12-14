@@ -66,6 +66,12 @@
             <i class="fas fa-shopping-bag mr-2"></i>Orders
             </a>         
           </li>
+                    </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="{{url('cms/users')}}">
+            <i class="fas fa-users mr-2"></i>Users
+            </a>         
+          </li>
         </ul>
       </div>
     </nav>

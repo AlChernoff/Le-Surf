@@ -21,6 +21,7 @@ Route::middleware(['cmsguard'])->group(function(){
         Route::resource('content','ContentController');
         Route::resource('categories','CategoriesController');
         Route::resource('products','ProductsController');
+        Route::resource('users','UsersController');
         Route::get('orders','CmsController@orders');
     });
 });
