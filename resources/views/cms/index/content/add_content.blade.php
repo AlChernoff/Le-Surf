@@ -27,7 +27,7 @@
                 <div class="form-group">
                         <label for="content_article"><span class="text-danger">*</span> Article:</label>
                         <textarea name="content_article" id="content_article" class="form-control">{{old('content_article')}}</textarea>
-                        <small class="text-muted">The  Title, min 2 chars, max 255 chars</small><br>
+                        <small class="text-muted">The  Article, min 2 chars, max 255 chars</small><br>
                         <span class="text-danger">{{$errors->first('content_article')}}</span>
                 </div>
                 <a href="{{url('cms/content')}}" class="btn btn-secondary">Cancel</a>

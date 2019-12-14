@@ -4,6 +4,7 @@ namespace App;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Cart;
+use Image;
 use Session;
 
 class Product extends Model
@@ -90,6 +91,68 @@ class Product extends Model
                 }
             }
         }
+    }
+
+    public static function save_new($request)
+    {
+        $image_name='default.png';
+        if ($request->hasFile('product_image') &&  $request->file('product_image')->isValid()) {
+            $file=$request->file('product_image');
+            $image_name = date('Y.m.d.H.i.s') . '-'.$file->getClientOriginalName();
+            $request->file('product_image')->move(public_path() . '/assets/images/products/', $image_name);
+
+            $img = Image::make(public_path() . '/assets/images/products/'.$image_name);
+
+            // resize the image to a width of 640 and HEIGHT 480 constrain aspect ratio (auto height)
+            $img->resize(640, 480, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save();
+        }
+
+        $product = new self();
+        $product->category_id = $request['category_id'];
+        $product->product_title= $request['product_title'];
+        $product->product_article= $request['article'];
+        $product->product_url= $request['url'];
+        $product->product_image= $image_name;
+        $product->price= $request['price'];
+        $product->save();
+
+        Session::flash('sm', 'Product created successfully!');
+    }
+
+
+    public static function update_item($request,$id)
+    {
+        $image_name='';
+        if ($request->hasFile('product_image') &&  $request->file('product_image')->isValid()) {
+            $file=$request->file('product_image');
+            $image_name = date('Y.m.d.H.i.s') . '-'.$file->getClientOriginalName();
+            $request->file('product_image')->move(public_path() . '/assets/images/products/', $image_name);
+
+            $img = Image::make(public_path() . '/assets/images/products/'.$image_name);
+
+            // resize the image to a width of 640 and HEIGHT 480 constrain aspect ratio (auto height)
+            $img->resize(640, 480, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $img->save();
+        }
+ 
+        $product = self::find($id);
+        $product->category_id = $request['category_id'];
+        $product->product_title= $request['product_title'];
+        $product->product_article= $request['article'];
+        $product->product_url= $request['url'];
+        if($image_name){
+            $product->product_image= $image_name;
+        }
+ 
+        $product->price= $request['price'];
+        $product->save();
+
+        Session::flash('sm', 'Product updated successfully!');
     }
 }
 

@@ -22,3 +22,4 @@ String.prototype.toPermalink = function(){
 $('.original-text').on('keyup',function(){
    $('.target-text').val($(this).val().toPermalink());
 })
+
